@@ -30,7 +30,8 @@
 <body>
     <h1>InGen Software Technologies Inc.</h1>
     <p>A venture by Aadhav Venkatesan</p>
-    <img src="ingen.jpg" alt="InGen Software Technologies inc.">
+    <img src="ingen.png" alt="InGen Software Technologies inc.">
+
     <!-- Password form -->
     <form id="passwordForm">
         <label for="password">Enter Password:</label>
@@ -38,15 +39,19 @@
         <button type="submit">Submit</button>
     </form>
 
+    <!-- Options container -->
+    <div id="options" style="display: none;">
+        <button onclick="showCode()">View Code</button>
+        <a href="stock-market.html"><button>Stock Market Today</button></a>
+    </div>
+
     <!-- Code container with syntax highlighting -->
     <div id="code" class="code-container" style="display: none;">
         <h2>Arduino Code</h2>
         <pre><code class="language-arduino">
-
-
 // Include necessary libraries
-#include <Servo.h> // For controlling motors
-#include <ColorSensor.h> // For detecting color
+#include &lt;Servo.h&gt; // For controlling motors
+#include &lt;ColorSensor.h&gt; // For detecting color
 
 // Define pins for motors
 #define MOTOR1_PIN 3
@@ -89,7 +94,7 @@ void loop() {
   int colorValue = colorSensor.read();
 
   // Check if color is black
-  if (colorValue < BLACK_THRESHOLD) {
+  if (colorValue &lt; BLACK_THRESHOLD) {
     // Activate buzzer for 5 seconds
     digitalWrite(BUZZER_PIN, HIGH);
     delay(5000);
@@ -131,9 +136,7 @@ void loop() {
     delay(1000);
   }
 }
-
-// Code sourced from InGen Software Technologies Inc.
-        </code></pre>
+</code></pre>
     </div>
 
     <script>
@@ -141,11 +144,16 @@ void loop() {
             event.preventDefault();
             var password = document.getElementById("password").value;
             if (password === "INGEN1234") {
-                document.getElementById("code").style.display = "block";
+                document.getElementById("options").style.display = "block";
+                document.getElementById("code").style.display = "none"; // Hide code initially
             } else {
                 alert("Incorrect password. Please try again.");
             }
         });
+
+        function showCode() {
+            document.getElementById("code").style.display = "block";
+        }
     </script>
 </body>
 </html>
